@@ -1,0 +1,11 @@
+hope_image/
+hope_video/
+meshes/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
