@@ -1,0 +1,63 @@
+{
+  "safety_margin_cm": 2.0,
+  "dbscan_eps_cm": 5.0,
+  "voxel_size_cm": 1.0,
+  "objects": {
+    "MacaroniAndCheese": {
+      "status": "not_visible"
+    },
+    "Pineapple": {
+      "status": "not_visible"
+    },
+    "Milk": {
+      "status": "not_visible"
+    },
+    "TomatoSauce": {
+      "status": "ok",
+      "table_z": 10,
+      "landing_z": 11,
+      "raw_valid": 0,
+      "visible_valid": 0,
+      "clusters": []
+    },
+    "Cookies": {
+      "status": "not_visible"
+    },
+    "OrangeJuice": {
+      "status": "not_visible"
+    },
+    "Mustard": {
+      "status": "not_visible"
+    },
+    "Parmesan": {
+      "status": "not_visible"
+    },
+    "CreamCheese": {
+      "status": "ok",
+      "table_z": 10,
+      "landing_z": 11,
+      "raw_valid": 3,
+      "visible_valid": 3,
+      "clusters": [
+        {
+          "cluster_id": 0,
+          "size": 3,
+          "anchor_voxel": [
+            17,
+            35,
+            11
+          ],
+          "anchor_world_cm": [
+            61.340176315180734,
+            18.8724382408081,
+            -33.632406583170464
+          ],
+          "free_score": 636
+        }
+      ]
+    },
+    "AlphabetSoup": {
+      "status": "not_visible"
+    }
+  }
+}

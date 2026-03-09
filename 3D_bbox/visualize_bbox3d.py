@@ -17,7 +17,7 @@ from PIL import Image
 
 META_PATH   = "../test_data/meta_data.json"
 IMAGE_PATH  = "../test_data/0000_rgb.jpg"
-OUTPUT_PATH = "../test_data/bbox_3d_0000.png"
+OUTPUT_PATH = "../test_data/bbox_3d_0000.jpg"
 
 BOTTOM_COLOR = "orange"
 
@@ -115,7 +115,6 @@ def main():
         cls           = obj["class"]
         bbox3d        = obj.get("bbox3d")
         pose          = obj.get("pose")
-        bottom_offset = obj.get("bottom_offset")
 
         if bbox3d is None or pose is None:
             print(f"[WARNING] {cls} 缺少 bbox3d 或 pose，跳过")
@@ -143,7 +142,7 @@ def main():
                        alpha=0.35, linewidth=2.0, zorder=3)
         ax.add_patch(poly)
 
-        # ── 4. 虚线：bbox 中心 → 接触面中心 + 偏移量标注 ─────────────────────
+        # ── 4. 虚线：bbox 中心 → 接触面中心 ──────────────────────────────
         center_obj       = (np.array(bbox3d[:3]) + np.array(bbox3d[3:])) / 2.0
         contact_face_obj = corners_obj[contact_idx].mean(axis=0)
 
@@ -155,15 +154,6 @@ def main():
                 [two_pts_2d[0, 1], two_pts_2d[1, 1]],
                 color=BOTTOM_COLOR, linewidth=1.5,
                 linestyle="--", alpha=0.9, zorder=4)
-
-        if bottom_offset is not None:
-            ax.annotate(
-                f"{bottom_offset:.2f} cm",
-                xy=two_pts_2d[1],
-                xytext=(two_pts_2d[1, 0] + 5, two_pts_2d[1, 1] + 5),
-                fontsize=6, color=BOTTOM_COLOR,
-                bbox=dict(fc="black", alpha=0.35, pad=1, edgecolor="none"),
-            )
 
         # ── 5. 类别标注：放在最近面投影中心上方 ─────────────────────────────
         z_vals    = corners_cam[:, 2]
@@ -177,7 +167,7 @@ def main():
         legend_handles.append(mpatches.Patch(color=color, label=cls))
 
     legend_handles.append(
-        mpatches.Patch(color=BOTTOM_COLOR, alpha=0.6, label="contact face / offset"))
+        mpatches.Patch(color=BOTTOM_COLOR, alpha=0.6, label="contact face"))
     ax.legend(handles=legend_handles, loc="upper right",
               fontsize=7, framealpha=0.6)
 
