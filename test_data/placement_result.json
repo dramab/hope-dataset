@@ -1,6 +1,10 @@
 {
-  "safety_margin_cm": 2.0,
+  "safety_margin_cm": 0.5,
   "dbscan_eps_cm": 5.0,
+  "yaw_steps": 24,
+  "min_support_ratio": 0.9,
+  "occlusion_threshold": 0.3,
+  "gpu_used": false,
   "voxel_size_cm": 1.0,
   "objects": {
     "MacaroniAndCheese": {
@@ -16,9 +20,29 @@
       "status": "ok",
       "table_z": 10,
       "landing_z": 11,
-      "raw_valid": 0,
-      "visible_valid": 0,
-      "clusters": []
+      "raw_candidates": 240,
+      "stable": 240,
+      "visible": 240,
+      "unoccluded": 240,
+      "clusters": [
+        {
+          "cluster_id": 0,
+          "size": 240,
+          "anchor_voxel": [
+            19,
+            35,
+            11
+          ],
+          "anchor_world_cm": [
+            63.340176315180734,
+            18.8724382408081,
+            -33.632406583170464
+          ],
+          "yaw_index": 3,
+          "yaw_degrees": 45.0,
+          "free_score": 1921
+        }
+      ]
     },
     "Cookies": {
       "status": "not_visible"
@@ -36,23 +60,27 @@
       "status": "ok",
       "table_z": 10,
       "landing_z": 11,
-      "raw_valid": 3,
-      "visible_valid": 3,
+      "raw_candidates": 93,
+      "stable": 93,
+      "visible": 93,
+      "unoccluded": 93,
       "clusters": [
         {
           "cluster_id": 0,
-          "size": 3,
+          "size": 93,
           "anchor_voxel": [
             17,
-            35,
+            36,
             11
           ],
           "anchor_world_cm": [
             61.340176315180734,
-            18.8724382408081,
+            19.8724382408081,
             -33.632406583170464
           ],
-          "free_score": 636
+          "yaw_index": 0,
+          "yaw_degrees": 0.0,
+          "free_score": 648
         }
       ]
     },
